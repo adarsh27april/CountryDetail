@@ -1,0 +1,8 @@
+.countryList{
+   position: 'relative';
+   width: '98vw';
+   height: '90vh';
+   border-radius: '3px';
+   background-size: '100% 100%';
+   margin-top: '4rem';
+}
