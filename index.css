@@ -6,3 +6,15 @@
    background-size: '100% 100%';
    margin-top: '4rem';
 }
+
+#countryList{
+   border: rgb(90 172 123) 2px solid;
+}
+
+/* Set the size of the div element that contains the map */
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
