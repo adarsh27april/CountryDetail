@@ -3,8 +3,10 @@ var countryObjArr;
 let searchedCountryDataDiv = document.getElementById('searchedCountryData');
 
 const clickedCountry = (id) => {
+   /**
+    * if the arrow button in countryList is clicked then it will show it in search results.
+    */
    console.log(id);
-   // its working now
    countryName = document.getElementById(id).innerText;
    var url = "https://restcountries.com/v3.1/name/" + countryName;
 
@@ -15,6 +17,8 @@ const clickedCountry = (id) => {
       .then((data) => {
          console.log(data);
          displaySearchedCountryData(data);
+         // countryObjArr = data;
+         // displayDetailCountry(countryName);
       })
       .catch((error) => {
          console.log('Error during fetch: ' + error.message);
@@ -22,10 +26,12 @@ const clickedCountry = (id) => {
       );
 }
 
-
 const form1 = document.getElementById('form1');
 const form1btn = document.getElementById('form1btn');
 form1btn.addEventListener('click', () => {
+   /**
+    * this event listener will track the input text in search box
+    */
    console.log(form1.value);
 
    var url = "https://restcountries.com/v3.1/name/" + form1.value;
@@ -50,7 +56,13 @@ form1btn.addEventListener('click', () => {
 
 const displaySearchedCountryData = (data) => {
    console.log('inside searchedCountryData');
+
    if (data.status === undefined) {
+      /**
+       * if the searched value is not found then API returns a object with
+       * 'status' as key and '404' as value, and if some data is returned then this
+       * key, value pair is not present in 'data'.
+       */
       searchedCountryDataDiv.innerHTML = `<br/><h2>Search Results</h2>`
       ul = document.createElement('ul');
       ul.classList.add('list-group');
@@ -66,17 +78,23 @@ const displaySearchedCountryData = (data) => {
       </li>`
          ul.innerHTML += x;
       });
-
       searchedCountryDataDiv.appendChild(ul);
    }
 }
 
 const displayNoData = () => {
+   /**
+    * If input text in search field contains something for which API doesn't return
+    * anything then this will be displyed
+    */
    searchedCountryDataDiv.innerHTML = `<br/><h2>Search Results</h2> <br/> <br/> No Data Found`
 }
 
 let requiredCountry;
 const displayDetailCountry = (officialName) => {
+   /**
+    * this function will show details of country after formatting.
+    */
    console.log(officialName);
    requiredCountry = countryObjArr.filter((country) => {
       console.log(country.name.official);
@@ -97,6 +115,10 @@ const displayDetailCountry = (officialName) => {
 
    let capitals = "";
    if (requiredCountry[0].capital != undefined)
+      /**
+       * for some countries Like Antarctica capital doesn't exist in API response
+       *  so this check will prevent errors
+       */
       for (let i = 0; i < requiredCountry[0].capital.length; i++) {
          const element = requiredCountry[0].capital[i];
          if (i > 0) {
@@ -107,6 +129,10 @@ const displayDetailCountry = (officialName) => {
 
    let langsSpoken = "";
    if (requiredCountry[0].languages != undefined) {
+      /**
+       * for some countries Like Antarctica language key doesn't exist in API response
+       * so this check will prevent errors
+       */
       let langsSpokenArr = Object.values(requiredCountry[0].languages);
       console.log(langsSpokenArr);
       for (let i = 0; i < langsSpokenArr.length; i++) {
@@ -139,12 +165,15 @@ const displayDetailCountry = (officialName) => {
    tbody.innerHTML = tableData;
    cardFlagName.innerHTML = imgName;
 
-
    bingMap();
    weather();
 }
 
 const bingMap = () => {
+   /**
+    * to get an interactive map in iframe and embed it in html.
+    */
+
    const map = document.getElementById('map');
    const latitude = requiredCountry[0].latlng[0];
    const longitude = requiredCountry[0].latlng[1];
@@ -169,6 +198,9 @@ const bingMap = () => {
 }
 
 const weather = () => {
+   /**
+    * to get weather data and show it in html.
+    */
    const capital = requiredCountry[0].capital[0];
    console.log(capital);
    const capitalWeather = document.getElementById('capitalWeather');

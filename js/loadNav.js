@@ -8,3 +8,6 @@ fetch('../components/nav.html')
         oldelem.parentNode.replaceChild(newelem, oldelem);
     })
 
+/**
+ * this js code adds nav.html inside index.html
+ */

@@ -11,18 +11,18 @@
 
 	<title>Country Detail</title>
 
-	<!-- <script src="./js/googlemap.js"></script> -->
-	<!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> -->
-
 </head>
 
 <body>
 	<noscript>You need to enable JavaScript to run this app.</noscript>
 	<div id="root">
 
+		<!-- This script will be replaced with nav.html when the page loads. -->
 		<script id="replace_with_navbar" src="./js/loadNav.js"></script>
 
 		<div class="row mb-2 my-5">
+
+			<!-- This script will be replaced with countryList.html when the page loads. -->
 			<script id="replace_with_countryList" src="./js/loadCountrylist.js"></script>
 
 			<div class="my-2 col-md-5 p-2">
@@ -41,24 +41,39 @@
 
 		<div class="container">
 			<div class="row mb-2 my-5 mx-5">
-				<div class="my-2 mx-3 col-md-4 p-2" id="cardFlagName" style="width: 18rem;"></div>
+				<div class="my-2 mx-3 col-md-4 p-2" id="cardFlagName" style="width: 18rem;">
+					<!-- the contents inside this tag will be changed by
+						displayDetailCountry() function present inside main.js 
+						it will dispaly Country Flag & Name
+					-->
+				</div>
 				<div class="table-responsive mx-3 my-2 col-md-4 p-2" id='tableData'>
 					<table class="table table-hover table-responsive">
 						<tbody id="tbody">
+							<!-- the contents inside this tag will be changed by
+								displayDetailCountry() function present inside main.js
+							it will display some details of country based on api data
+							-->
 						</tbody>
 					</table>
 				</div>
 
 			</div>
 		</div>
-		<!-- </div> -->
+
 		<div class="container">
 			<div class="row mb-2 my-4 mx-1">
 				<div class="col-md-8">
-					<div id="map" class="m-2"> </div>
+					<div id="map" class="m-2">
+						<!-- this will be changed by bingMap() function
+							and a interactive map will be chown here -->
+					</div>
 				</div>
 				<div class="col-md-4">
-					<div id="capitalWeather" class="m-2"></div>
+					<div id="capitalWeather" class="m-2">
+						<!-- this will be edited by weather() function
+						and weather of the capital city will be shown here -->
+					</div>
 				</div>
 			</div>
 		</div>

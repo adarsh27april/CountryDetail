@@ -11,6 +11,10 @@ fetch('../components/countryList.html')
    })
 
 document.addEventListener('DOMContentLoaded', () => {
+   /**
+    * on loading this page it will populate the country list with the
+    *  official name of countries based on data received from API
+    */
    var url = "https://restcountries.com/v3.1/all";
 
    fetch(url)
@@ -30,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
       );
 
    function displayAsRow(countries) {
+      /**
+       * it formats the contents of the list and updates the list.
+       */
       console.log('countries list displayed');
 
       const countryListDiv = document.getElementById("countryList");
